@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>条码生成器</title>
+    <title>EAN-13 / UPC Generator</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.0/JsBarcode.all.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.4/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 py-10">
     <div class="max-w-xl mx-auto bg-white p-6 rounded-lg shadow-md">
-        <h1 class="text-2xl font-semibold mb-4">条码生成器</h1>
+        <h1 class="text-2xl font-semibold mb-4">EAN-13 / UPC Generator</h1>
         <div class="mb-4">
-            <label for="eanInput" class="block font-medium">输入EAN-13或UPC码：</label>
+            <label for="eanInput" class="block font-medium">Enter EAN-13 or UPC code:</label>
             <input type="text" id="eanInput" class="w-full border border-gray-300 rounded-lg p-2" placeholder="输入EAN-13或UPC码">
         </div>
-        <label for="barcodeType" class="block font-medium">选择条码类型：</label>
+        <label for="barcodeType" class="block font-medium">Choose barcode type</label>
         <select id="barcodeType" class="w-full border border-gray-300 rounded-lg p-2 mb-4">
             <option value="EAN13">EAN-13</option>
             <option value="UPC">UPC</option>
         </select>
-        <button onclick="generateBarcode()" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600">生成条码</button>
-        <a id="downloadLink" style="display: none;" class="mt-4 block text-blue-500 font-medium" download>下载SVG</a>
+        <button onclick="generateBarcode()" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600">Generate</button>
+        <a id="downloadLink" style="display: none;" class="mt-4 block text-blue-500 font-medium" download>Download SVG</a>
     </div>
     <div class="max-w-xl mx-auto mt-8">
         <svg id="barcode" class="w-full"></svg>
@@ -44,10 +44,10 @@
                 var url = URL.createObjectURL(blob);
                 var downloadLink = document.getElementById("downloadLink");
                 downloadLink.href = url;
-                downloadLink.download = eanInput + "_" + barcodeType.toLowerCase() + "_barcode.svg"; // Set the filename
+                downloadLink.download = eanInput + ".svg"; // Set the filename
                 downloadLink.style.display = "block";
             } else {
-                alert("请输入有效的EAN-13或UPC码。");
+                alert("Enter a valid EAN-13 or UPC code.");
             }
         }
     </script>
